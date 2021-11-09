@@ -18,15 +18,15 @@
             </div>
             <div class="row mb-3">
               <div class="col-sm-3">
-                <h6 class="mb-0">Date et heure</h6>
+                <h6 class="mb-0">Date et heure de début</h6>
               </div>
               <div class="col-sm-9 text-secondary"><%=@event.start_date.strftime("%d/%m/%Y %H:%M")%></div>
             </div>
             <div class="row mb-3">
               <div class="col-sm-3">
-                <h6 class="mb-0">Durée</h6>
+                <h6 class="mb-0">Date et heure de fin</h6>
               </div>
-              <div class="col-sm-9 text-secondary"><%=@event.duration%> minutes</div>
+              <div class="col-sm-9 text-secondary"><%=@end_date.strftime("%d/%m/%Y %H:%M")%></div>
             </div>
             <div class="row mb-3">
               <div class="col-sm-3">
