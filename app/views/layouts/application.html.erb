@@ -24,13 +24,16 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="<%=new_event_path%>">Nouvel event</a>
           </li>
           
           <% if user_signed_in? %>
           <li class="nav-item">
            <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class:"nav-link"%>
            </li>
+          <li class="nav-item">
+           <%= link_to raw("#{current_user.email}"), user_path(current_user.id), class:"nav-link" %>
+          </li>
           <% else %>
           <li class="nav-item">
            <%= link_to 'Se connecter', new_user_session_path, class:"nav-link" %>
@@ -38,6 +41,7 @@
            <li class="nav-item">
           <%= link_to 'S\'inscrire', new_user_registration_path, class:"nav-link" %>
           </li>
+
           <% end %>
           
 
