@@ -10,14 +10,15 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
-User.create(first_name:"Paul", last_name:"Predo", email:"paulpredo666@yopmail.com", description:"Sample User")
-User.create(first_name:"Louis", last_name:"Predo", email:"louispredo666@yopmail.com", description:"Sample User")
-User.create(first_name:"Pierre", last_name:"Predo", email:"pierrepredo666@yopmail.com", description:"Sample User")
-User.create(first_name:"Henri", last_name:"Predo", email:"henripredo666@yopmail.com", description:"Sample User")
+User.create(first_name:"Paul", last_name:"Predo", email:"paulpredo666@yopmail.com", description:"Sample User",password:"123456")
+User.create(first_name:"Louis", last_name:"Predo", email:"louispredo666@yopmail.com", description:"Sample User",password:"123456")
+User.create(first_name:"Pierre", last_name:"Predo", email:"pierrepredo666@yopmail.com", description:"Sample User",password:"123456")
+User.create(first_name:"Henri", last_name:"Predo", email:"henripredo666@yopmail.com", description:"Sample User",password:"123456")
 
 
 10.times do |i|
-  Event.create(start_date:Time.now+(rand(10)*60), duration:20, title: "Concert #{i} ", description: "Super concert blablablabla", price:20, location:"Salle des fêtes", user:User.all.sample)
+  eventx = Event.create(start_date:Time.now+(rand(10)*60), duration:20, title: "Concert #{i} ", description: "Super concert blablablabla", price:20, location:"Salle des fêtes", user:User.all.sample)
+  puts "Création de l'event #{eventx.id}"
 end
 
 Attendance.create(user:User.first, event:Event.first)
