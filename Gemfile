@@ -66,7 +66,7 @@ gem 'simple_form'
 gem 'table_print'
 gem 'dotenv-rails'
 gem 'devise'
-
+gem 'stripe'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
