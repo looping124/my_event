@@ -42,6 +42,13 @@
             </div>
             <div class="row">
               <div class="col-sm-3"></div>
+                <% if  @admin %>
+                <a class="col-2 btn btn-secondary"aria-current="page"href="<%= event_attendances_path(@event.id)%>">Admin</a>
+                <% elsif  @can_participate %>
+                <a class="col-2 btn btn-secondary"aria-current="page"href="<%= new_event_attendance_path(@event.id)%>">Participer</a>
+                <% else false %>
+                <div class="col-sm-9 text-success">Vous participez déjà</div>
+                <% end %>
               <div class="col-sm-9 text-secondary">
               </div>
             </div>
@@ -51,3 +58,12 @@
     </div>
   </div>
 </div>
+
+
+    <p> admin ?
+    <%= current_user == @event.user%>
+    </p>
+
+    <p> deja inscrit ?
+    <%= @event.users.include? current_user%>
+    </p>

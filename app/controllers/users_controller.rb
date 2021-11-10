@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @events = @user.created_events.order('updated_at DESC')
+
   end
 
   def edit
@@ -30,5 +32,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to root_path
   end
 end

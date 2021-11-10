@@ -1,0 +1,29 @@
+<div class="row">
+ <div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-secondary " aria-current="page" href="<%=edit_event_path(@event.id)%>">Editer</a>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User ID</th>
+      <th scope="col">email</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    <% @attendances.each_with_index do |attendance, index| %>
+     <tr>
+      <th scope="row"><%=  (index+1) %></th>
+      <td><%=  attendance.user.id%></td>
+      <td><%=  attendance.user.email%></td>
+      <td><%=  attendance.user.first_name%></td>
+      <td><%=  attendance.user.last_name%></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>

@@ -27,14 +27,40 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @end_date = @event.start_date + @event.duration*60
+    
+
+    if current_user == @event.user
+      @admin = true
+    else
+      @admin = false
+    end
+
+    if @event.users.include? current_user
+      @can_participate = false
+    else
+      @can_participate = true
+    end
   end
 
   def edit
+    @event = Event.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:id])
+    event_params = params.require(:event).permit(:title,:description,:start_date,:duration,:price,:location)
+    event_params[:user] = current_user
+    if @event.update(event_params)
+      redirect_to event_path(@event.id), success: "Event modifié avec succès"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to root_path
   end
+
 end
