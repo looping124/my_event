@@ -78,8 +78,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: my_event_production
+#   username: my_event
+#   password: <%= ENV['MY_EVENT_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
-  database: my_event_production
-  username: my_event
-  password: <%= ENV['MY_EVENT_DATABASE_PASSWORD'] %>
+  database: my_event_test
