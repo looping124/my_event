@@ -9,7 +9,11 @@
     <%= f.input :duration %>
     <%= f.input :price %>
     <%= f.input :location %>
+    <br>
+    <%= f.file_field :avatar %>
+    <br>
     <%= f.button :submit ,class:'btn btn-dark mt-3'%>
+    
     <%= link_to "Supprimer cet évènement", event_path(@event.id), :method => :delete, data: {confirm: "Are you sure?"},class:"btn btn-danger mt-3" %>
   <% end %>
 </div>

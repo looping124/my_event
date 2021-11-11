@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    event_params = params.require(:event).permit(:title,:description,:start_date,:duration,:price,:location)
+    event_params = params.require(:event).permit(:title,:description,:start_date,:duration,:price,:location, :avatar)
     event_params[:user] = current_user
     @event = Event.new(event_params)
     if @event.valid?
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    event_params = params.require(:event).permit(:title,:description,:start_date,:duration,:price,:location)
+    event_params = params.require(:event).permit(:title,:description,:start_date,:duration,:price,:location, :avatar)
     event_params[:user] = current_user
     if @event.update(event_params)
       redirect_to event_path(@event.id), success: "Event modifié avec succès"

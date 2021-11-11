@@ -67,8 +67,9 @@ gem 'table_print'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe'
+gem 'shrine'
+gem 'image_processing'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
-  gem 'stripe'
 end
