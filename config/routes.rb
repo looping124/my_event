@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
 
+  
   devise_for :users
   root to: 'events#index'
   get 'home/private'
 
   resources :events do
     resources :attendances
+  end
+  resources :admin, only: [:index]
+  namespace :admin do
+    resources :events, :users
   end
   
   resources :users
